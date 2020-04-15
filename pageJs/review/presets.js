@@ -18,6 +18,11 @@ function addPresetsBar(){
 	presetBox.innerText = "Presets: ";
 	presetBox.setAttribute("class", "presetBox");
 
+	//Add optional styling (have it be expanded or not)
+	if (settings["revCardView"] != "extended"){
+		presetBox.style.maxWidth = "1170px"; //The px value used by Niantic in main.min.css
+	}
+
 	var addButton = document.createElement("button");
 	addButton.innerText = "+";
 	addButton.onclick = addPreset;
@@ -120,17 +125,19 @@ function presetClick(e){
 function removePreset(e){
 	e.preventDefault();
 
-	var pID = e.srcElement.getAttribute("presetID");
-	var presets = JSON.parse(localStorage.wfpPresets);
-	presets.splice(pID, 1); //Remove from array
-	localStorage.wfpPresets = JSON.stringify(presets); //Store removal
+	if (confirm("Are you sure you want to remove this preset?")){
+		var pID = e.srcElement.getAttribute("presetID");
+		var presets = JSON.parse(localStorage.wfpPresets);
+		presets.splice(pID, 1); //Remove from array
+		localStorage.wfpPresets = JSON.stringify(presets); //Store removal
 
-	//Remove all "old" buttons
-	while (presetContainer.firstChild) {
-	    presetContainer.removeChild(presetContainer.firstChild);
+		//Remove all "old" buttons
+		while (presetContainer.firstChild) {
+			presetContainer.removeChild(presetContainer.firstChild);
+		}
+		//Readd buttons
+		addAllPresetButtons();
 	}
-	//Readd buttons
-	addAllPresetButtons();
 }
 
 function keepInBounds(val){

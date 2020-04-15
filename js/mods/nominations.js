@@ -11,15 +11,28 @@ function modNominationPage(settings){
 		addStats();
 		addPageJS("nominations/statsWidget.js");
 	}
+
+	if (settings["nomNotify"]){
+		addPageJS("nominations/notify.js");
+	}
+
+	if (settings["nominationMap"]) {
+		addPageJS("libs/markerclusterer.js");
+		addPageJS("nominations/nominationMap.js");
+	}
+
 	if (settings["nomStreetView"]){
 		addStreetView();
 		addPageJS("nominations/streetView.js");
 	}
-    if (settings["nomAccessDistCircle"] || settings["nomLowestDistCircle"] || settings["ctrlessZoom"]){
+    if (settings["nomAccessDistCircle"] || settings["nomLowestDistCircle"] || settings["ctrlessZoom"] || settings["nomS2Cell"] != -1 || settings["nomSecondS2Cell"] != -1){
     	addPageJS("nominations/mapMods.js");
     }
     if (settings["nomOpenIn"]){
     	addPageJS("nominations/mapButtons.js");
+	}
+	if (settings["nomExportButtons"]){
+		addPageJS("nominations/exportButtons.js");
 	}
     if (settings["accPoGo"] && settings["accIngress"] && settings["nomStats"])
         addNomTypeButtons();
@@ -45,7 +58,7 @@ function modNominationPage(settings){
 			queries: [{element: "#map"}]
 	});
 
-	if (settings["nomS2Cell"] != -1)
+	if (settings["nomS2Cell"] != -1 || settings["nomSecondS2Cell"] != -1)
 		addPageJS("libs/S2.js");
 	
 	addPageJS("nominations/main.js", true);
@@ -109,6 +122,7 @@ function addStats(){
 	//Create required HTML (Content is written from the pageJS as NominationController access is required!)
 	var container = document.createElement("div");
 	container.setAttribute("class", "wrap-collabsible");
+	container.id = "statsWidget";
 
 	var collapsibleInput = document.createElement("input");
 	collapsibleInput.id = "collapsible";

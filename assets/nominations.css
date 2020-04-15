@@ -17,11 +17,10 @@
 }
 
 .wrap-collabsible {
-  margin-bottom: 1.2rem 0;
-  float: right;
+  margin-bottom: 1.2rem;
 }
 
-#collapsible {
+#collapsible, #collapsed-map {
   display: none;
 }
 
@@ -157,4 +156,27 @@ th, td{
 
 .dropdown:hover .dropbtn {
   background-color: #3e8e41;
+}
+
+#statsWidget{
+  float: right;
+}
+
+#wfpNotify{
+  position: absolute;
+  bottom: 1em;
+  right: 1em;
+  width: 30em;
+}
+
+.wfpNotification{
+  border-radius: 0.5em;
+  background-color: #3e8e41CC;
+  padding: 1em;
+  margin-top: 1.5em;
+  color: white;
+}
+
+.wfpNotifyCloseButton{
+  float: right;
 }

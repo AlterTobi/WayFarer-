@@ -24,6 +24,12 @@ function applyMapMods(){
         if (SVMap != undefined)
             addS2(SVMap, settings["nomS2Cell"]);
     }
+    if (settings["nomSecondS2Cell"] != -1){
+        addS2(nomCtrl.map, settings["nomSecondS2Cell"], "#E47252");
+        //SVMap is exported by the nomStreetView mod when active
+        if (SVMap != undefined)
+            addS2(SVMap, settings["nomSecondS2Cell"], "#E47252");
+    }
 }
 
 function addLowestDistCircle(gMap){ 
@@ -65,8 +71,7 @@ function mapsRemoveCtrlToZoom(){
         SVMap.setOptions(options);
 }
 
-
-function addS2(map, lvl){
+function addS2(map, lvl, colCode = '#00FF00'){
     var lat = nomCtrl.currentNomination.lat;
     var lng = nomCtrl.currentNomination.lng;
 
@@ -80,7 +85,7 @@ function addS2(map, lvl){
         geodesic: true,
         fillColor: 'grey',
         fillOpacity: 0.2,
-        strokeColor: '#00FF00',
+        strokeColor: colCode,
         strokeOpacity: 1.0,
         strokeWeight: 1,
         map: map
