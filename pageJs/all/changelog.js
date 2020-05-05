@@ -15,13 +15,6 @@ if (window.localStorage.getItem("wfpVersion") === null){
 function showChangelog(version){
 	var changelogStr = "";
 	switch(version){
-		case 19:
-			changelogStr += "1.12.3:\n\
-							- On-site changelogs!\n\
-							- Improvements to Review History display\n\
-							- Option to turn on Open In for Review History\n\
-							- Lock submit timer now works for rejections\n\
-							- Minor improvements to settings UX\n\n";
 		case 20:
 			changelogStr += "1.12.4:\n\
 							- An additional S2 cell level can be enabled\n\
@@ -50,7 +43,24 @@ function showChangelog(version){
 							- Nomination data export now includes a account specific UID\n\
 							- UX/UI improvements to Review History\n\
 							- If 2 different S2 cell levels are used they now use different colours\n\
-							- A major issue that broke Review History was fixed!";
+							- A major issue that broke Review History was fixed!\n\n";
+		case 24:
+			changelogStr += "1.14.2\n\
+							- WayFarer+ settings can now be exported, imported or reset to default values.\n\
+							- For users affected by very long loading times, you can now enable a notification\n\
+							sound in settings that will notify you when a nomination has loaded\n\
+							- By default a small circle will appear when moving a nomination, this will indicate\n\
+							the area where wayfarer won't allow you to move it to, as it's too close to the original\n\
+							location\n\n";
+		case 25:
+			changelogStr += "1.14.3:\n\
+							- Recon badge progress can now be seen on profile, you'll need to configure your account settings\n\
+							in order for this change to take effect.\n\
+							- Filtering nominations will now filter them on the Nominations map too!\n\
+							- A character count for description and supporting statements are now available during a\n\
+							nomination edit\n\
+							- A 2m circle can now be activated for the nominations page\n\
+							- Behind the scenes improvements";
 		default:
 			break;
 	}
